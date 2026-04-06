@@ -104,14 +104,16 @@ bash <skill-root>/scripts/render.sh <skill-root>/templates/github-stats.html ./o
 bash <skill-root>/scripts/render.sh /path/to/your/template.html
 ```
 
-`render.sh` screenshots the `#app` element at 900px width using a `file://`
-URL and prints a single line: the **absolute path** to the PNG file.
+`render.sh` screenshots the `#app` element using a `file://` URL (built
+internally by `screenshot.mjs`) and prints a single line: the **absolute
+path** to the PNG file. The default viewport is `mobile`; pass a third
+argument to change it (e.g. `desktop`).
 
 For more control, call `screenshot.mjs` directly:
 
 ```bash
 node <skill-root>/screenshot.mjs <skill-root>/templates/weather.html \
-  --width 900 \
+  --viewport mobile \
   --selector '#app' \
   --out ./screenshots \
   --name weather
