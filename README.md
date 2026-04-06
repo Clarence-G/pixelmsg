@@ -32,15 +32,16 @@ Plain text works. Images stick.
 
 <table>
 <tr>
-<td align="center"><img src="screenshots/weather-default-mobile.png" width="200" /><br /><sub>Weather Card</sub></td>
-<td align="center"><img src="screenshots/github-trending-default-mobile.png" width="200" /><br /><sub>GitHub Trending</sub></td>
-<td align="center"><img src="screenshots/todolist-default-mobile.png" width="200" /><br /><sub>Todo List</sub></td>
+<td align="center"><img src="screenshots/weather-default-mobile.png" width="180" /><br /><sub>Weather Card</sub></td>
+<td align="center"><img src="screenshots/todolist-default-mobile.png" width="180" /><br /><sub>Todo List</sub></td>
+<td align="center"><img src="screenshots/daily-digest-default-560w.png" width="280" /><br /><sub>AI Daily Digest</sub></td>
 </tr>
 </table>
 
 <table>
 <tr>
-<td align="center"><img src="screenshots/github-stats-default-desktop.png" width="640" /><br /><sub>GitHub Stats — Desktop</sub></td>
+<td align="center"><img src="screenshots/github-trending-default-560w.png" width="300" /><br /><sub>GitHub Trending</sub></td>
+<td align="center"><img src="screenshots/github-stats-default-desktop.png" width="460" /><br /><sub>GitHub Stats</sub></td>
 </tr>
 </table>
 
@@ -51,7 +52,7 @@ Plain text works. Images stick.
 - **Precise cropping** — screenshots the `#app` element, not the whole page
 - **Multiple viewports** — mobile (375px), tablet (768px), desktop (1440px), or custom
 - **Agent-ready** — `render.sh` outputs an absolute path; compatible platforms send it as an image
-- **5 production templates** — weather, GitHub trending, GitHub stats, todo list, and more
+- **6 production templates** — weather, AI digest, GitHub trending, GitHub stats, todo list, and more
 - **Composable** — pass URL params to inject dynamic data without modifying HTML
 
 ## Quick Start
@@ -79,6 +80,7 @@ npx playwright install chromium
 | `templates/github-trending.html` | Top 10 GitHub Trending repos with stars and language | Mobile |
 | `templates/github-stats.html` | GitHub user profile — contributions, streaks, pinned repos | Desktop |
 | `templates/todolist.html` | Categorized todo list with progress overview | Mobile |
+| `templates/daily-digest.html` | AI-generated daily briefing — headline, insights, tags | Mobile |
 
 All templates use real demo data and render without a build step. Open any `.html` in a browser to preview.
 

@@ -32,15 +32,16 @@ AI agent 被困在纯文本里。`pixelmsg` 打破这一限制 —— 给 agent 
 
 <table>
 <tr>
-<td align="center"><img src="screenshots/zh/weather-default-mobile.png" width="200" /><br /><sub>天气卡片</sub></td>
-<td align="center"><img src="screenshots/zh/github-trending-default-mobile.png" width="200" /><br /><sub>GitHub 热榜</sub></td>
-<td align="center"><img src="screenshots/zh/todolist-default-mobile.png" width="200" /><br /><sub>待办清单</sub></td>
+<td align="center"><img src="screenshots/zh/weather-default-mobile.png" width="180" /><br /><sub>天气卡片</sub></td>
+<td align="center"><img src="screenshots/zh/todolist-default-mobile.png" width="180" /><br /><sub>待办清单</sub></td>
+<td align="center"><img src="screenshots/zh/daily-digest-default-560w.png" width="280" /><br /><sub>AI 每日简报</sub></td>
 </tr>
 </table>
 
 <table>
 <tr>
-<td align="center"><img src="screenshots/zh/github-stats-default-desktop.png" width="640" /><br /><sub>GitHub 统计 — 桌面端</sub></td>
+<td align="center"><img src="screenshots/zh/github-trending-default-560w.png" width="300" /><br /><sub>GitHub 热榜</sub></td>
+<td align="center"><img src="screenshots/zh/github-stats-default-desktop.png" width="460" /><br /><sub>GitHub 统计</sub></td>
 </tr>
 </table>
 
@@ -51,7 +52,7 @@ AI agent 被困在纯文本里。`pixelmsg` 打破这一限制 —— 给 agent 
 - **精准裁切** — 只截取 `#app` 元素，不截整页
 - **多种视口** — 移动端（375px）、平板（768px）、桌面端（1440px），或自定义
 - **Agent 就绪** — `render.sh` 输出绝对路径；兼容平台自动将其作为图片消息发送
-- **5 个生产级模板** — 天气、GitHub 热榜、GitHub 统计、待办清单等
+- **6 个生产级模板** — 天气、AI 每日简报、GitHub 热榜、GitHub 统计、待办清单等
 - **可组合** — 通过 URL 参数注入动态数据，无需修改 HTML
 
 ## 快速开始
@@ -79,6 +80,7 @@ npx playwright install chromium
 | `templates/github-trending.html` | GitHub 热榜 Top 10，含 star 数和语言 | 移动端 |
 | `templates/github-stats.html` | GitHub 用户主页 — 贡献、连续天数、置顶仓库 | 桌面端 |
 | `templates/todolist.html` | 分类待办清单，带进度概览 | 移动端 |
+| `templates/daily-digest.html` | AI 生成的每日简报 — 标题、洞察、标签 | 移动端 |
 
 所有模板均使用真实演示数据，无需构建即可渲染。用浏览器打开任意 `.html` 文件即可预览。
 
