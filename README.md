@@ -12,6 +12,8 @@
 
 </div>
 
+[English](README.md) | [中文](README.zh-CN.md)
+
 ---
 
 AI agents are stuck in plain text. `pixelmsg` breaks that ceiling — give your agent an HTML template, render it with Playwright, and send a pixel-perfect PNG image to the user. Weather cards, daily reports, GitHub stats, dashboards. Whatever you can design in HTML, you can ship as a rich image message.
