@@ -1,4 +1,5 @@
 node_modules/
-screenshots/
 .DS_Store
 *.log
+screenshots/*-check-*.png
+screenshots/*-restored-*.png
