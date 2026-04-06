@@ -101,15 +101,34 @@ node screenshot.mjs templates/todolist.html --params category=工作 --viewport 
 
 pixelmsg is designed to work as an [OpenClaw](https://github.com/openclaw/openclaw) Agent Skill. The agent reads `SKILL.md` to understand when and how to use it.
 
-```bash
-# Install via npx (when published)
-npx skills add pixelmsg
+#### Install via ClawHub (recommended)
 
-# Or point your agent runtime at this directory
-SKILL_PATH=/path/to/pixelmsg
+```bash
+npx clawhub@latest install pixelmsg
 ```
 
-When the agent calls `render.sh`, it gets back an absolute path. OpenClaw and compatible runtimes automatically attach it as an image message — no extra code needed.
+This automatically installs the skill into `~/.agents/skills/pixelmsg` and registers it with OpenClaw. No restart needed.
+
+#### Install via skills CLI (Vercel / Claude Code / Cursor / Cline)
+
+```bash
+npx skills add Clarence-G/pixelmsg
+```
+
+Compatible with 18+ AI agents including Claude Code, GitHub Copilot, Cursor, and Cline.
+
+#### Manual install
+
+```bash
+# Clone and symlink into your agent skills directory
+git clone https://github.com/Clarence-G/pixelmsg ~/.agents/skills/pixelmsg
+```
+
+When the agent calls `render.sh`, it gets back an absolute path. For OpenClaw on Feishu/Telegram/Signal:
+1. Copy the output PNG to the agent workspace (`~/.openclaw/workspace/`)
+2. Return it with `MEDIA:/path/to/workspace/image.png` on its own line
+
+See [`SKILL.md`](SKILL.md) → Step 4 for the full delivery spec.
 
 ### Write your own template
 

@@ -121,16 +121,63 @@ node <skill-root>/screenshot.mjs <skill-root>/templates/weather.html \
 
 ---
 
-## Step 4 — Return the Path
+## Step 4 — Deliver the Image
 
-`render.sh` outputs one line:
+`render.sh` outputs one line — the absolute path to the PNG:
 
 ```
 /Users/you/Projects/pixelmsg/screenshots/weather-default-mobile.png
 ```
 
-Return this path to the platform. OpenClaw and compatible agent runtimes
-automatically attach it as an image message — no extra code needed.
+### Copy to Agent Workspace First
+
+Before returning the path, **copy the file to the agent's workspace directory**.
+Many platforms (including OpenClaw on Feishu/Telegram/Signal) only serve files
+from a specific workspace path. Accessing the file directly from the project
+directory will silently fail — no image appears in chat.
+
+```bash
+cp /path/to/screenshot.png ~/.openclaw/workspace/output.png
+```
+
+Then return the workspace path.
+
+### Deliver with `MEDIA:` Syntax
+
+In your reply, output the workspace path on its **own line**, prefixed with
+`MEDIA:` — **nothing else on that line, no surrounding text**:
+
+```
+MEDIA:/Users/you/.openclaw/workspace/output.png
+```
+
+⚠️ **Critical rules:**
+- `MEDIA:` line must be **completely standalone** — no text before or after it on the same line
+- Do **not** mix it with prose like "Here is your image: MEDIA:/path" — that breaks attachment detection
+- If you want to add context, put it on a **separate line** before or after:
+
+```
+Here is your weather card! 🌤️
+
+MEDIA:/Users/you/.openclaw/workspace/weather.png
+```
+
+### Full Delivery Sequence
+
+```bash
+# 1. Render
+bash <skill-root>/scripts/render.sh <skill-root>/templates/weather.html
+# → /Users/you/Projects/pixelmsg/screenshots/weather-default-mobile.png
+
+# 2. Copy to workspace
+cp /Users/you/Projects/pixelmsg/screenshots/weather-default-mobile.png \
+   ~/.openclaw/workspace/weather-card.png
+```
+
+Then in your reply:
+```
+MEDIA:/Users/you/.openclaw/workspace/weather-card.png
+```
 
 ---
 
