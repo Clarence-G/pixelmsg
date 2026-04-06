@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,11 +18,11 @@
 
 <div x-data="{
   tasks: [
-    { title: '阅读《深度工作》30分钟', done: true },
-    { title: '晨跑 5km',              done: true },
-    { title: '完成 Q2 OKR 草稿',      done: false },
-    { title: 'Review PR #142',        done: false },
-    { title: '准备周五分享',           done: false }
+    { title: 'Read Deep Work for 30 min', done: true },
+    { title: 'Morning run 5km',           done: true },
+    { title: 'Draft Q2 OKR',              done: false },
+    { title: 'Review PR #142',            done: false },
+    { title: 'Prep Friday talk',          done: false }
   ],
   get done() { return this.tasks.filter(t => t.done).length },
   get total() { return this.tasks.length },
@@ -38,9 +38,9 @@
     <!-- Header -->
     <div style="margin-bottom:20px;">
       <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:16px;">
-        <div style="font-size:24px; font-weight:700; color:#fff; letter-spacing:-0.3px;">今日待办</div>
+        <div style="font-size:24px; font-weight:700; color:#fff; letter-spacing:-0.3px;">Today's Tasks</div>
         <div style="font-size:14px; color:rgba(255,255,255,0.6);">
-          <span x-text="done"></span>/<span x-text="total"></span> 完成
+          <span x-text="done"></span>/<span x-text="total"></span> done
         </div>
       </div>
       <!-- Progress bar -->

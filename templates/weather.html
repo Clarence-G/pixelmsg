@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,26 +17,26 @@
 <body>
 
 <div x-data="{
-  city: '上海',
-  date: '2026年4月3日',
-  current: { temp: 18, condition: '多云', feelsLike: 16, humidity: 72, wind: '东南风 3级' },
+  city: 'Shanghai',
+  date: 'April 3, 2026',
+  current: { temp: 18, condition: 'Cloudy', feelsLike: 16, humidity: 72, wind: 'SE Wind 3' },
   forecast: [
-    { day: '今天', high: 19, low: 13, condition: '多云' },
-    { day: '明天', high: 17, low: 11, condition: '小雨' },
-    { day: '后天', high: 15, low: 10, condition: '阵雨' },
-    { day: '周一', high: 18, low: 12, condition: '多云' },
-    { day: '周二', high: 21, low: 14, condition: '晴' }
+    { day: 'Today', high: 19, low: 13, condition: 'Cloudy' },
+    { day: 'Tomorrow', high: 17, low: 11, condition: 'Light Rain' },
+    { day: 'Day 3', high: 15, low: 10, condition: 'Showers' },
+    { day: 'Mon', high: 18, low: 12, condition: 'Cloudy' },
+    { day: 'Tue', high: 21, low: 14, condition: 'Sunny' }
   ],
   conditionIcon(c) {
     const a = &quot;fill='none' stroke='rgba(255,255,255,0.85)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'&quot;;
     const icons = {
-      '晴':  `<svg width='16' height='16' viewBox='0 0 24 24' ${a}><circle cx='12' cy='12' r='4'/><line x1='12' y1='2' x2='12' y2='5'/><line x1='12' y1='19' x2='12' y2='22'/><line x1='2' y1='12' x2='5' y2='12'/><line x1='19' y1='12' x2='22' y2='12'/><line x1='4.9' y1='4.9' x2='7.1' y2='7.1'/><line x1='16.9' y1='16.9' x2='19.1' y2='19.1'/><line x1='16.9' y1='7.1' x2='19.1' y2='4.9'/><line x1='4.9' y1='19.1' x2='7.1' y2='16.9'/></svg>`,
-      '多云': `<svg width='16' height='16' viewBox='0 0 24 24' ${a}><path d='M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z'/></svg>`,
-      '小雨': `<svg width='16' height='16' viewBox='0 0 24 24' ${a}><path d='M20 16.2A4.5 4.5 0 0 0 17.5 8h-1.8A7 7 0 1 0 4 14.9'/><line x1='8' y1='19' x2='8' y2='21'/><line x1='12' y1='17' x2='12' y2='21'/><line x1='16' y1='19' x2='16' y2='21'/></svg>`,
-      '阵雨': `<svg width='16' height='16' viewBox='0 0 24 24' ${a}><path d='M20 16.2A4.5 4.5 0 0 0 17.5 8h-1.8A7 7 0 1 0 4 14.9'/><line x1='8' y1='19' x2='8' y2='21'/><line x1='12' y1='17' x2='12' y2='21'/><line x1='16' y1='19' x2='16' y2='21'/></svg>`,
-      '阴':  `<svg width='16' height='16' viewBox='0 0 24 24' ${a}><path d='M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z'/></svg>`
+      'Sunny':      `<svg width='16' height='16' viewBox='0 0 24 24' ${a}><circle cx='12' cy='12' r='4'/><line x1='12' y1='2' x2='12' y2='5'/><line x1='12' y1='19' x2='12' y2='22'/><line x1='2' y1='12' x2='5' y2='12'/><line x1='19' y1='12' x2='22' y2='12'/><line x1='4.9' y1='4.9' x2='7.1' y2='7.1'/><line x1='16.9' y1='16.9' x2='19.1' y2='19.1'/><line x1='16.9' y1='7.1' x2='19.1' y2='4.9'/><line x1='4.9' y1='19.1' x2='7.1' y2='16.9'/></svg>`,
+      'Cloudy':     `<svg width='16' height='16' viewBox='0 0 24 24' ${a}><path d='M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z'/></svg>`,
+      'Light Rain': `<svg width='16' height='16' viewBox='0 0 24 24' ${a}><path d='M20 16.2A4.5 4.5 0 0 0 17.5 8h-1.8A7 7 0 1 0 4 14.9'/><line x1='8' y1='19' x2='8' y2='21'/><line x1='12' y1='17' x2='12' y2='21'/><line x1='16' y1='19' x2='16' y2='21'/></svg>`,
+      'Showers':    `<svg width='16' height='16' viewBox='0 0 24 24' ${a}><path d='M20 16.2A4.5 4.5 0 0 0 17.5 8h-1.8A7 7 0 1 0 4 14.9'/><line x1='8' y1='19' x2='8' y2='21'/><line x1='12' y1='17' x2='12' y2='21'/><line x1='16' y1='19' x2='16' y2='21'/></svg>`,
+      'Overcast':   `<svg width='16' height='16' viewBox='0 0 24 24' ${a}><path d='M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9z'/></svg>`
     };
-    return icons[c] || icons['多云'];
+    return icons[c] || icons['Cloudy'];
   },
   tempBarStyle(low, high) {
     const min = 8, max = 24, span = max - min;
@@ -81,22 +81,22 @@
     <!-- Stats panel (glassmorphism) -->
     <div style="backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:12px; padding:14px 16px; margin-bottom:12px; display:grid; grid-template-columns:1fr 1fr 1fr;">
       <div style="text-align:center;">
-        <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px;">湿度</div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px;">Humidity</div>
         <div style="font-size:15px; font-weight:600; color:#fff;"><span x-text="current.humidity"></span>%</div>
       </div>
       <div style="text-align:center; border-left:1px solid rgba(255,255,255,0.15); border-right:1px solid rgba(255,255,255,0.15);">
-        <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px;">体感</div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px;">Feels Like</div>
         <div style="font-size:15px; font-weight:600; color:#fff;"><span x-text="current.feelsLike"></span>°</div>
       </div>
       <div style="text-align:center;">
-        <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px;">风力</div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px;">Wind</div>
         <div style="font-size:15px; font-weight:600; color:#fff;" x-text="current.wind"></div>
       </div>
     </div>
 
     <!-- 5-day forecast panel (glassmorphism) -->
     <div style="backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); border-radius:12px; padding:14px 16px;">
-      <div style="font-size:11px; font-weight:600; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">5 天预报</div>
+      <div style="font-size:11px; font-weight:600; color:rgba(255,255,255,0.5); text-transform:uppercase; letter-spacing:0.1em; margin-bottom:12px;">5-Day Forecast</div>
       <div style="display:flex; flex-direction:column; gap:10px;">
         <template x-for="f in forecast" :key="f.day">
           <div style="display:grid; grid-template-columns:40px 24px 52px 1fr 28px; align-items:center; gap:8px;">

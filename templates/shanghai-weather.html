@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>上海天气</title>
+  <title>Shanghai Weather</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -42,26 +42,26 @@
   },
   wmo(code) {
     const map = {
-      0:'晴', 1:'大部晴', 2:'多云', 3:'阴',
-      45:'雾', 48:'冻雾',
-      51:'小毛毛雨', 53:'毛毛雨', 55:'浓毛毛雨',
-      61:'小雨', 63:'中雨', 65:'大雨',
-      71:'小雪', 73:'中雪', 75:'大雪',
-      80:'阵雨', 81:'中阵雨', 82:'暴雨',
-      95:'雷暴', 99:'强雷暴'
+      0:'Sunny', 1:'Mostly Sunny', 2:'Cloudy', 3:'Overcast',
+      45:'Fog', 48:'Freezing Fog',
+      51:'Light Drizzle', 53:'Drizzle', 55:'Heavy Drizzle',
+      61:'Light Rain', 63:'Rain', 65:'Heavy Rain',
+      71:'Light Snow', 73:'Snow', 75:'Heavy Snow',
+      80:'Showers', 81:'Moderate Showers', 82:'Heavy Showers',
+      95:'Thunderstorm', 99:'Severe Thunderstorm'
     };
-    return map[code] || '未知';
+    return map[code] || 'Unknown';
   },
   dayLabel(dateStr, i) {
-    if (i === 0) return '今天';
-    if (i === 1) return '明天';
-    if (i === 2) return '后天';
+    if (i === 0) return 'Today';
+    if (i === 1) return 'Tomorrow';
+    if (i === 2) return 'Day 3';
     const d = new Date(dateStr);
-    return ['周日','周一','周二','周三','周四','周五','周六'][d.getDay()];
+    return ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'][d.getDay()];
   },
   windDir(deg) {
-    const dirs = ['北','东北','东','东南','南','西南','西','西北'];
-    return dirs[Math.round(deg / 45) % 8] + '风';
+    const dirs = ['N','NE','E','SE','S','SW','W','NW'];
+    return dirs[Math.round(deg / 45) % 8] + ' Wind';
   }
 }" x-init="
   try {
@@ -90,7 +90,7 @@
     <!-- Location -->
     <div style="margin-bottom:32px;">
       <div style="font-size:11px; font-weight:500; color:#999; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Shanghai · Live</div>
-      <div style="font-size:28px; font-weight:700; color:#111; letter-spacing:-0.5px;">上海</div>
+      <div style="font-size:28px; font-weight:700; color:#111; letter-spacing:-0.5px;">Shanghai</div>
     </div>
 
     <!-- Temperature -->
@@ -105,22 +105,22 @@
     <!-- Stats -->
     <div style="display:grid; grid-template-columns:1fr 1fr 1fr; margin-bottom:32px; padding:20px 0; border-top:1px solid #e5e5e5; border-bottom:1px solid #e5e5e5;">
       <div style="text-align:center;">
-        <div style="font-size:11px; color:#bbb; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">体感</div>
+        <div style="font-size:11px; color:#bbb; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">Feels Like</div>
         <div style="font-size:15px; font-weight:500; color:#333;" x-text="cur ? Math.round(cur.apparent_temperature) + '°' : '--'"></div>
       </div>
       <div style="text-align:center; border-left:1px solid #e5e5e5; border-right:1px solid #e5e5e5;">
-        <div style="font-size:11px; color:#bbb; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">湿度</div>
+        <div style="font-size:11px; color:#bbb; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">Humidity</div>
         <div style="font-size:15px; font-weight:500; color:#333;" x-text="cur ? cur.relative_humidity_2m + '%' : '--'"></div>
       </div>
       <div style="text-align:center;">
-        <div style="font-size:11px; color:#bbb; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">风力</div>
+        <div style="font-size:11px; color:#bbb; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:6px;">Wind</div>
         <div style="font-size:15px; font-weight:500; color:#333;" x-text="cur ? windDir(cur.wind_direction_10m) + ' ' + Math.round(cur.wind_speed_10m) + 'km/h' : '--'"></div>
       </div>
     </div>
 
     <!-- Forecast -->
     <div>
-      <div style="font-size:11px; color:#bbb; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:16px;">5 天预报</div>
+      <div style="font-size:11px; color:#bbb; text-transform:uppercase; letter-spacing:0.1em; margin-bottom:16px;">5-Day Forecast</div>
       <div style="display:flex; flex-direction:column; gap:14px;">
         <template x-for="(f, i) in daily" :key="f.date">
           <div style="display:grid; grid-template-columns:48px 64px 1fr 36px; align-items:center; gap:12px;">
